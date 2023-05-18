@@ -99,7 +99,7 @@ def submit():
         llm = load_LLM(openai_api_key=openai_api_key)
         prompt_with_email = prompt.format(tone=option_tone, dialect=option_dialect, email=email_input)
         formatted_email = llm(prompt_with_email)
-        st.write(formatted_email)
+        st.session_state.formatted_email = formatted_email
     
     
 st.button("Globalize it", type='primary', help="Click to convert it", on_click=submit)
@@ -107,4 +107,5 @@ st.button("Globalize it", type='primary', help="Click to convert it", on_click=s
 st.button("*See An Example*", type='secondary', help="Click to see an example of the email you will be converting.", on_click=update_text_with_example)
 
 st.markdown("### Your Converted Email:")
-
+if 'formatted_email' in st.session_state:
+    st.write(st.session_state.formatted_email)
