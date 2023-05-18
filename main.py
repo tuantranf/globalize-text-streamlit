@@ -92,8 +92,6 @@ def update_text_with_example():
 def submit():
     print("submit")
     if email_input:
-        st.warning('Please insert email', icon="⚠️")
-            st.stop()
         if not openai_api_key:
             st.warning('Please insert OpenAI API Key. Instructions [here](https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key)', icon="⚠️")
             st.stop()
